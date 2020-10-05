@@ -1,3 +1,5 @@
+# Majority of this scripte was copied from
+# https://github.com/abhishekkrthakur/wtfml/blob/master/setup.py
 from setuptools import setup, Extension
 from setuptools import find_packages
 
