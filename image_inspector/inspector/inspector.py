@@ -69,8 +69,7 @@ class ImageInspector:
 
         # writing the new values into a dataframe
 
-        self.result.loc[self.iterator, :] = values \
-            + [self.imgs[self.iterator]]
+        self.result.loc[self.iterator, :] = values + [self.imgs[self.iterator]]
 
     # Callback subtracting 1 from the iterator, loading a previous image and
     # results for the previous image
@@ -87,8 +86,7 @@ class ImageInspector:
 
             # self.result.loc[self.iterator, :] = values + [self.imgs[self.iterator]]
 
-            self.result.loc[self.iterator, :] = values \
-                + [self.imgs[self.iterator]]
+            self.result.loc[self.iterator, :] = values + [self.imgs[self.iterator]]
             self.grid.load_values(self.iterator, self.result)
 
         return self.result
