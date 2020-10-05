@@ -61,15 +61,17 @@ class ImageInspector:
     # data from the toggle grid to a dataframe
 
     def next_click(self, b):
+        #reading the values
+        values = self.grid.get_values()
+
+        # writing the new values into a dataframe
+        self.result.loc[self.iterator, :] = values + [self.imgs[self.iterator]]
+
         (self.next, self.prev, self.iterator) = next_wrapper(self.next,
                 self.prev, self.iterator, self.imgs)
         display_image(self.out_img, self.path, self.imgs, self.iterator)
 
-        values = self.grid.get_values()
-
-        # writing the new values into a dataframe
-
-        self.result.loc[self.iterator - 1, :] = values + [self.imgs[self.iterator - 1]]
+        
 
     # Callback subtracting 1 from the iterator, loading a previous image and
     # results for the previous image
