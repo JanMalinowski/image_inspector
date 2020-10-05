@@ -6,8 +6,6 @@ from ..utils.toggle_grid import ToggleGrid
 from IPython.display import display
 
 
-# A class for inspecting the dataset.
-
 class ImageInspector:
 
     def __init__(
@@ -44,7 +42,7 @@ class ImageInspector:
 
         # dataframe storing the results of the "inspection"
 
-        self.result = pd.DataFrame(columns=[self.imgs +  ["Image Name"]])
+        self.result = pd.DataFrame(columns=[self.imgs + ['Image Name']])
 
     def __call__(self):
         display_image(self.out_img, self.path, self.imgs, self.iterator)
@@ -71,7 +69,8 @@ class ImageInspector:
 
         # writing the new values into a dataframe
 
-        self.result.loc[self.iterator, :] = values + self.imgs[self.iterator]
+        self.result.loc[self.iterator, :] = values \
+            + [self.imgs[self.iterator]]
 
     # Callback subtracting 1 from the iterator, loading a previous image and
     # results for the previous image
@@ -83,7 +82,13 @@ class ImageInspector:
         self.grid.load_values(self.iterator, self.result)
 
     def get_results(self):
-        if (self.iterator == len(self.imgs) - 1) or (self.iterator == 0):
+        if self.iterator == len(self.imgs) - 1 or self.iterator == 0:
             values = self.grid.get_values()
-            self.result.loc[self.iterator, :] = values + self.imgs[self.iterator]
+
+            # self.result.loc[self.iterator, :] = values + [self.imgs[self.iterator]]
+
+            self.result.loc[self.iterator, :] = values \
+                + [self.imgs[self.iterator]]
+            self.grid.load_values(self.iterator, self.result)
+
         return self.result
