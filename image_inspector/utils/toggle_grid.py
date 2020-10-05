@@ -1,4 +1,4 @@
-from buttons import create_toggle_button
+from .buttons import create_toggle_button
 from numpy import ceil
 from ipywidgets import GridspecLayout
 
