@@ -44,7 +44,7 @@ class ImageInspector:
 
         # dataframe storing the results of the "inspection"
 
-        self.result = pd.DataFrame(columns=self.cats)
+        self.result = pd.DataFrame(columns=[self.cats, 'Image Name'])
 
     def __call__(self):
         display_image(self.out_img, self.path, self.imgs, self.iterator)
