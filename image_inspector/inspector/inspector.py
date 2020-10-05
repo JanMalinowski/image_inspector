@@ -89,5 +89,5 @@ class ImageInspector:
 
         result_df = self.result.copy()
         result_df.loc[0:self.iterator, 'Image_name'] = \
-            self.imgs[0:self.iterator + 1]
+            self.imgs[0:self.iterator]
         return result_df
