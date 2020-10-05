@@ -1,8 +1,8 @@
-from utils.buttons import create_button, next_wrapper, prev_wrapper, \
+from ..utils.buttons import create_button, next_wrapper, prev_wrapper, \
     display_image
 import pandas as pd
 from ipywidgets import AppLayout, Output
-from utils.toggle_grid import ToggleGrid
+from ..utils.toggle_grid import ToggleGrid
 from IPython.display import display
 
 
