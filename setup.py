@@ -11,7 +11,7 @@ with open("README.md", encoding="utf-8") as f:
 if __name__ == "__main__":
     setup(
         name="image_inspector",
-        version=wtfml.__version__,
+        version=image_inspector.__version__,
         description="App for inspecting images",
         long_description=long_description,
         long_description_content_type="text/markdown",
