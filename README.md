@@ -1,9 +1,9 @@
 # Image_inspector
 
 Image_inspector is a simple GUI application for data-inspection and/or labellig.
-The ```python ImageInspector class``` helps label the data by displaying the image and a list of toggle-buttons below it. Once a toggle button is clicked, it set's the 
+The ``` ImageInspector class``` helps label the data by displaying the image and a list of toggle-buttons below it. Once a toggle button is clicked, it set's the 
 category corresponding to that button to True. Once the labelling is finished the data
-can be accessed by callign the ```python get_results()``` method
+can be accessed by callign the ```get_results()``` method
 
 ## Installation
 
