@@ -9,6 +9,16 @@ from ipywidgets import GridspecLayout
 
 class ToggleGrid:
 
+    """
+    A class that creates a grid
+    of toggle buttons and facilitates getting 
+    information from them.
+
+    :param cats: list of categories
+    :param n_cols: number of grid's columns
+    :param categories: list of categories
+    """
+
     def __init__(self, categories, n_cols=3):
         self.cats = categories
         self.n_cols = n_cols

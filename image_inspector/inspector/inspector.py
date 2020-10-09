@@ -7,7 +7,16 @@ from IPython.display import display
 
 
 class ImageInspector:
+    """
+    A class for inspecting images through a simple
+    IPywidgets GUI.
 
+    :param imgs: list: of images' names
+    :param path: path: to the folder with images
+    :param categories: list of categories
+    :param n_cols: list of columns of the toggle
+    grid to be displayed
+    """
     def __init__(
         self,
         imgs,
@@ -52,7 +61,7 @@ class ImageInspector:
     # Callback adding 1 to the iterator, loading a new image and saving the
     # data from the toggle grid to a dataframe
     def next_click(self, b):
-        #reading the values
+        #reading the values from the toggle grid
         values = self.grid.get_values()
 
         # writing the new values into a dataframe
