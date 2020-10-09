@@ -11,12 +11,14 @@ The package can be installed by running the following command:
 
 ## Usage
 The class takes the following parameters:
-imgs - list of images' names to be labelled
-path - path to the folder containing the images
-categories - list of the categories that the images may fall into
 
 ```python
 from image_inspector import ImageInspector
+
+# imgs - list of images' names to be labelled
+# path - path to the folder containing the images
+# categories - list of the categories that the images may fall into
+
 ii = ImageInspector(imgs=imgs, path=path, categories=categories) # Initializes ImageInspector class
 ii() # Display's inspector's GUI
 ii.get_results() # Return a data frame with the results
