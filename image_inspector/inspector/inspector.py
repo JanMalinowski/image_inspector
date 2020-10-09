@@ -17,49 +17,40 @@ class ImageInspector:
         ):
 
         # list of images
-
         self.imgs = imgs
 
         # path to the folder containing the images
-
         self.path = path
 
         # list of categories.
-
         self.cats = categories
         self.iterator = 0
 
         # out_img stores the image that is being displayed.
-
         self.out_img = Output()
 
         # Creating the navigation buttons
-
         self.next = create_button('Next', self.next_click)
         self.prev = create_button('Previous', self.prev_click,
                                   disabled=True)
         self.grid = ToggleGrid(self.cats, n_cols=n_cols)
 
         # dataframe storing the results of the "inspection"
-
         self.result = pd.DataFrame(columns=[self.cats + ['Image Name']])
 
     def __call__(self):
         display_image(self.out_img, self.path, self.imgs, self.iterator)
 
         # Creating the application layout
-
         app = AppLayout(header=None, left_sidebar=self.prev,
                         center=self.out_img, right_sidebar=self.next,
                         footer=self.grid())
 
         # displaying the application
-
         display(app)
 
     # Callback adding 1 to the iterator, loading a new image and saving the
     # data from the toggle grid to a dataframe
-
     def next_click(self, b):
         #reading the values
         values = self.grid.get_values()
@@ -75,13 +66,13 @@ class ImageInspector:
 
     # Callback subtracting 1 from the iterator, loading a previous image and
     # results for the previous image
-
     def prev_click(self, b):
         (self.next, self.prev, self.iterator) = prev_wrapper(self.next,
                 self.prev, self.iterator, self.imgs)
         display_image(self.out_img, self.path, self.imgs, self.iterator)
         self.grid.load_values(self.iterator, self.result)
 
+    # Function returing a dataframe with the resuts.
     def get_results(self):
         if self.iterator == len(self.imgs) - 1 or self.iterator == 0:
             values = self.grid.get_values()

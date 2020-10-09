@@ -14,7 +14,6 @@ def display_image(
 
     # A simple function for displaying images. using ipywidget's out allows us
     # to change the output dynamically
-
     with out:
         out.clear_output()
         file = open(path + '/' + imgs[iterator], 'rb')
@@ -27,7 +26,6 @@ def create_button(description, cb, disabled=False):
                     button_style='')
 
     # Adding the  on-click callback
-
     button.on_click(cb)
     return button
 
@@ -47,7 +45,6 @@ def next_wrapper(
 
     # Disabling the button when the iterator
     # reaches the last image
-
     if iterator == len(imgs) - 2:
         next_button.disabled = True
         iterator = iterator + 1
@@ -58,7 +55,6 @@ def next_wrapper(
 
     # After clicking the next_buton the prev_button
     # Should no longer be disabled
-
     if prev_button.disabled:
         prev_button.disabled = False
 
@@ -74,7 +70,6 @@ def prev_wrapper(
 
     # If we move to the 0th image, it's no longer possible
     # to move back
-
     if iterator == 1:
         prev_button.disabled = True
         iterator = iterator - 1
@@ -85,7 +80,6 @@ def prev_wrapper(
 
     # If the next_button was disabled, clicking the prev_button
     # should change disabled to False
-
     if next_button.disabled:
         next_button.disabled = False
 

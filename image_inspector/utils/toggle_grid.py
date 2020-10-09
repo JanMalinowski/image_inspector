@@ -16,7 +16,6 @@ class ToggleGrid:
         self.grid = GridspecLayout(self.n_rows, self.n_cols)
 
     # The grid gets created on calling the class
-
     def __call__(self):
         for i in range(self.n_rows):
             for j in range(self.n_cols):
@@ -27,7 +26,6 @@ class ToggleGrid:
         return self.grid
 
     # get_values method takes the current buttons' values and resets the buttons
-
     def get_values(self):
         values = list()
 
@@ -40,7 +38,6 @@ class ToggleGrid:
 
     # load_values method sets the buttons' loads buttons'
     # previous values, which are stored in the dataframe df
-
     def load_values(self, iterator, df):
         for i in range(self.n_rows):
             for j in range(self.n_cols):
