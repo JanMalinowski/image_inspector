@@ -4,7 +4,7 @@ import pandas as pd
 from ipywidgets import AppLayout, Output
 from ..utils.toggle_grid import ToggleGrid
 from IPython.display import display
-
+from typing import List
 
 class ImageInspector:
     """
@@ -19,11 +19,11 @@ class ImageInspector:
     """
     def __init__(
         self,
-        imgs,
-        path,
-        categories,
-        n_cols=3,
-        ):
+        imgs: list[str],
+        path: str,
+        categories: list[str],
+        n_cols: int=3,
+        ) -> None:
 
         # list of images
         self.imgs = imgs
@@ -47,7 +47,7 @@ class ImageInspector:
         # dataframe storing the results of the "inspection"
         self.result = pd.DataFrame(columns=[self.cats + ['Image Name']])
 
-    def __call__(self):
+    def __call__(self) -> None:
         display_image(self.out_img, self.path, self.imgs, self.iterator)
 
         # Creating the application layout
@@ -60,7 +60,7 @@ class ImageInspector:
 
     # Callback adding 1 to the iterator, loading a new image and saving the
     # data from the toggle grid to a dataframe
-    def next_click(self, b):
+    def next_click(self, b) -> None:
         #reading the values from the toggle grid
         values = self.grid.get_values()
 
@@ -75,14 +75,14 @@ class ImageInspector:
 
     # Callback subtracting 1 from the iterator, loading a previous image and
     # results for the previous image
-    def prev_click(self, b):
+    def prev_click(self, b) -> None:
         (self.next, self.prev, self.iterator) = prev_wrapper(self.next,
                 self.prev, self.iterator, self.imgs)
         display_image(self.out_img, self.path, self.imgs, self.iterator)
         self.grid.load_values(self.iterator, self.result)
 
     # Function returing a dataframe with the resuts.
-    def get_results(self):
+    def get_results(self) -> pd.DataFrame:
         if self.iterator == len(self.imgs) - 1 or self.iterator == 0:
             values = self.grid.get_values()
 
