@@ -87,10 +87,9 @@ class ImageInspector:
 
     # Function returing a dataframe with the resuts.
     def get_results(self) -> pd.DataFrame:
-        if self.iterator == len(self.imgs) - 1 or self.iterator == 0:
-            values = self.grid.get_values()
+        values = self.grid.get_values()
 
-            self.result.loc[self.iterator, :] = values + [self.imgs[self.iterator]]
-            self.grid.load_values(self.iterator, self.result)
+        self.result.loc[self.iterator, :] = values + [self.imgs[self.iterator]]
+        self.grid.load_values(self.iterator, self.result)
 
         return self.result
