@@ -12,7 +12,7 @@ The package can be installed by running the following command:
 ```
 
 ## Usage
-The class takes the following parameters:
+Basic usage:
 
 ```python
 from image_inspector import ImageInspector
@@ -25,6 +25,7 @@ ii = ImageInspector(imgs=imgs, path=path, categories=categories) # Initializes I
 ii() # Display's inspector's GUI
 ii.get_results() # Return a data frame with the results
 ```
+Additional examples can be found in this kaggle [kernel](https://www.kaggle.com/janmalin/simple-app-for-inspecting-the-dataset) or in this repo's examples directory.
 
 ## License
 [MIT](https://choosealicense.com/licenses/mit/)
