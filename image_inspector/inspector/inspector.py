@@ -19,9 +19,9 @@ class ImageInspector:
     """
     def __init__(
         self,
-        imgs: list[str],
+        imgs: List[str],
         path: str,
-        categories: list[str],
+        categories: List[str],
         n_cols: int=3,
         ) -> None:
 
