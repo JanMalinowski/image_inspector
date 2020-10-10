@@ -1,10 +1,10 @@
-from ..utils.buttons import create_button, next_wrapper, prev_wrapper, \
-    display_image
+from ..utils.buttons import create_button, next_wrapper, prev_wrapper, display_image
 import pandas as pd
 from ipywidgets import AppLayout, Output
 from ..utils.toggle_grid import ToggleGrid
 from IPython.display import display
 from typing import List
+
 
 class ImageInspector:
     """
@@ -17,13 +17,14 @@ class ImageInspector:
     :param n_cols: list of columns of the toggle
     grid to be displayed
     """
+
     def __init__(
         self,
         imgs: List[str],
         path: str,
         categories: List[str],
-        n_cols: int=3,
-        ) -> None:
+        n_cols: int = 3,
+    ) -> None:
 
         # list of images
         self.imgs = imgs
@@ -39,21 +40,24 @@ class ImageInspector:
         self.out_img = Output()
 
         # Creating the navigation buttons
-        self.next = create_button('Next', self.next_click)
-        self.prev = create_button('Previous', self.prev_click,
-                                  disabled=True)
+        self.next = create_button("Next", self.next_click)
+        self.prev = create_button("Previous", self.prev_click, disabled=True)
         self.grid = ToggleGrid(self.cats, n_cols=n_cols)
 
         # dataframe storing the results of the "inspection"
-        self.result = pd.DataFrame(columns=[self.cats + ['Image Name']])
+        self.result = pd.DataFrame(columns=[self.cats + ["Image Name"]])
 
     def __call__(self) -> None:
         display_image(self.out_img, self.path, self.imgs, self.iterator)
 
         # Creating the application layout
-        app = AppLayout(header=None, left_sidebar=self.prev,
-                        center=self.out_img, right_sidebar=self.next,
-                        footer=self.grid())
+        app = AppLayout(
+            header=None,
+            left_sidebar=self.prev,
+            center=self.out_img,
+            right_sidebar=self.next,
+            footer=self.grid(),
+        )
 
         # displaying the application
         display(app)
@@ -61,23 +65,23 @@ class ImageInspector:
     # Callback adding 1 to the iterator, loading a new image and saving the
     # data from the toggle grid to a dataframe
     def next_click(self, b) -> None:
-        #reading the values from the toggle grid
+        # reading the values from the toggle grid
         values = self.grid.get_values()
 
         # writing the new values into a dataframe
         self.result.loc[self.iterator, :] = values + [self.imgs[self.iterator]]
 
-        (self.next, self.prev, self.iterator) = next_wrapper(self.next,
-                self.prev, self.iterator, self.imgs)
+        (self.next, self.prev, self.iterator) = next_wrapper(
+            self.next, self.prev, self.iterator, self.imgs
+        )
         display_image(self.out_img, self.path, self.imgs, self.iterator)
-
-        
 
     # Callback subtracting 1 from the iterator, loading a previous image and
     # results for the previous image
     def prev_click(self, b) -> None:
-        (self.next, self.prev, self.iterator) = prev_wrapper(self.next,
-                self.prev, self.iterator, self.imgs)
+        (self.next, self.prev, self.iterator) = prev_wrapper(
+            self.next, self.prev, self.iterator, self.imgs
+        )
         display_image(self.out_img, self.path, self.imgs, self.iterator)
         self.grid.load_values(self.iterator, self.result)
 
