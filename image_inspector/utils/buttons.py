@@ -1,16 +1,18 @@
 import pandas as pd
 from numpy import ceil
 from ipywidgets import Button, Layout, GridspecLayout, Image, Output, \
-    Button, ToggleButton
+    Button, ToggleButton, Output
 from IPython.display import display
+from typing import List, Tuple
+
 
 
 def display_image(
-    out,
-    path,
-    imgs,
-    iterator,
-    ):
+    out: Output,
+    path: str,
+    imgs: List[str],
+    iterator: int,
+    )-> None:
 
     # A simple function for displaying images. using ipywidget's out allows us
     # to change the output dynamically
@@ -21,7 +23,7 @@ def display_image(
         display(Image(value=image, width=400, height=400))
 
 
-def create_button(description, cb, disabled=False):
+def create_button(description: str, cb, disabled: bool=False) -> Button:
     button = Button(description=description, disabled=disabled,
                     button_style='')
 
@@ -30,18 +32,18 @@ def create_button(description, cb, disabled=False):
     return button
 
 
-def create_toggle_button(description):
+def create_toggle_button(description: str) -> ToggleButton:
     button = ToggleButton(value=False, description=description,
                           disabled=False)
     return button
 
 
 def next_wrapper(
-    next_button,
-    prev_button,
-    iterator,
-    imgs,
-    ):
+    next_button: Button,
+    prev_button: Button,
+    iterator: int,
+    imgs: List[str],
+    ) -> Tuple[Button, Button, int]:
 
     # Disabling the button when the iterator
     # reaches the last image
@@ -62,11 +64,11 @@ def next_wrapper(
 
 
 def prev_wrapper(
-    next_button,
-    prev_button,
-    iterator,
-    imgs,
-    ):
+    next_button: Button,
+    prev_button: Button,
+    iterator: int,
+    imgs: List[str],
+    ) -> Tuple[Button, Button, int]:
 
     # If we move to the 0th image, it's no longer possible
     # to move back
