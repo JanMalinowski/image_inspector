@@ -45,7 +45,7 @@ class ImageInspector:
         self.grid = ToggleGrid(self.cats, n_cols=n_cols)
 
         # dataframe storing the results of the "inspection"
-        self.result = pd.DataFrame(columns=[self.cats + ["Image Name"]])
+        self.result = pd.DataFrame(columns=self.cats + ["Image Name"])
 
     def __call__(self) -> None:
         display_image(self.out_img, self.path, self.imgs, self.iterator)
