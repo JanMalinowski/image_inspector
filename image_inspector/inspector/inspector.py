@@ -91,5 +91,8 @@ class ImageInspector:
 
         self.result.loc[self.iterator, :] = values + [self.imgs[self.iterator]]
         self.grid.load_values(self.iterator, self.result)
+        result = self.result.copy()
+        result.index = result['Image Name']
+        result = result.drop(['Image Name'], axis = 1)
 
-        return self.result
+        return result
