@@ -1,8 +1,14 @@
 # Image_inspector
 
-Image_inspector is a simple GUI application for data-inspection and/or labellig.
+Image_inspector is a simple GUI application for data-inspection and/or labelig.
 The ``` ImageInspector``` class helps to label data by displaying an image and a list of toggle-buttons below it. Once a toggle button is clicked, it set's the 
-category corresponding to that button to ```True```. Once the labelling is finished the data can be accessed by calling the ```get_results()``` .
+category corresponding to that button to ```True```. Once the labeling is finished the data can be accessed by calling the ```get_results()``` .
+
+## Video Tutorial
+
+*Apologies for the sound quality*
+
+https://youtu.be/Dxd0grCDlGE
 
 ## Installation
 
@@ -17,11 +23,13 @@ Basic usage:
 ```python
 from image_inspector import ImageInspector
 
-# imgs - list of images' names to be labelled
 # path - path to the folder containing the images
 # categories - list of the categories that the images may fall into
+# imgs - list of images' names to be labelled. [Optional]. If it's not specified
+# then all of the images from the path directory will be used.
 
-ii = ImageInspector(imgs=imgs, path=path, categories=categories) # Initializes ImageInspector class
+
+ii = ImageInspector(path=path, categories=categories, imgs=imgs) # Initializes ImageInspector class
 ii() # Display's inspector's GUI
 ii.get_results() # Return a data frame with the results
 ```
