@@ -4,6 +4,7 @@ from ipywidgets import AppLayout, Output
 from ..utils.toggle_grid import ToggleGrid
 from IPython.display import display
 from typing import List
+import os
 
 
 class ImageInspector:
@@ -20,17 +21,16 @@ class ImageInspector:
 
     def __init__(
         self,
-        imgs: List[str],
         path: str,
         categories: List[str],
         n_cols: int = 3,
     ) -> None:
 
-        # list of images
-        self.imgs = imgs
-
         # path to the folder containing the images
         self.path = path
+        # list of images
+        self.imgs = os.listdir(path)
+
 
         # list of categories.
         self.cats = categories
