@@ -23,14 +23,12 @@ class ImageInspector:
         self,
         path: str,
         categories: List[str],
+        images: List[str] = None,
         n_cols: int = 3,
     ) -> None:
 
         # path to the folder containing the images
         self.path = path
-        # list of images
-        self.imgs = os.listdir(path)
-
 
         # list of categories.
         self.cats = categories
@@ -46,6 +44,13 @@ class ImageInspector:
 
         # dataframe storing the results of the "inspection"
         self.result = pd.DataFrame(columns=self.cats + ["Image Name"])
+
+        # list of images
+        if images is None:
+            self.imgs = os.listdir(path)
+        else:
+            self.imgs = images
+
 
     def __call__(self) -> None:
         display_image(self.out_img, self.path, self.imgs, self.iterator)
